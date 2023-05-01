@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import ViewHeader from "./common/ViewHeader.vue";
-const props = defineProps({
+defineProps({
   query: {
     type: String,
     required: false,

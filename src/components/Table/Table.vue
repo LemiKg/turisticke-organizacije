@@ -1,16 +1,15 @@
 <template>
   <div class="w-full text-white">
     <div class="flex w-full font-bold mb-2">
-      <div class="p-2 w-1/3">Image</div>
-      <div class="p-2 w-1/3">Name</div>
-      <div class="p-2 w-1/3">Primary Category</div>
-      <div class="p-2 w-1/3">Actions</div>
+      <div v-for="col in headers" class="p-2 w-1/3">
+        {{ col.text }}
+      </div>
     </div>
-    <ObjectRow
-      v-for="object in touristObjects"
+    <Row
+      v-for="el in items"
       class="divide-x-2 divide-tertiary divide-dotted"
-      :key="object.id"
-      :object="object"
+      :key="el.id"
+      :object="el"
       @edit="edit"
       @remove="remove"
     />
@@ -19,12 +18,18 @@
 
 <script setup lang="ts">
 import { PropType } from "vue";
-import ObjectRow from "./ObjectRow.vue";
+import Row from "./Row.vue";
 
 defineProps({
-  touristObjects: {
+  items: {
     type: Array as PropType<
       Array<{ id: string; image: string; category: string }>
+    >,
+    required: true,
+  },
+  headers: {
+    type: Array as PropType<
+      Array<{ text: string; value: string; align?: string }>
     >,
     required: true,
   },
