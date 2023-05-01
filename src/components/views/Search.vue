@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <ViewHeader icon="stack" name="Hotel List" />
+    <ViewHeader icon="search" name="Search" />
   </div>
 </template>
 

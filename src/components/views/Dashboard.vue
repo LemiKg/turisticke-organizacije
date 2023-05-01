@@ -1,11 +1,11 @@
 <template>
   <div class="">
-    <ViewHeader name="Dashboard" />
+    <ViewHeader icon="dashboard" name="Dashboard" />
   </div>
 </template>
 
 <script setup lang="ts">
-import ViewHeader from "./ViewHeader.vue";
+import ViewHeader from "./common/ViewHeader.vue";
 </script>
 
 <style scoped></style>
