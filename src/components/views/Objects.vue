@@ -6,6 +6,8 @@
 </template>
 
 <script setup lang="ts">
+import ObjectsTable from "../Objects/ObjectsTable.vue";
+import ViewHeader from "./common/ViewHeader.vue";
 const objects = [
   {
     id: "1",
@@ -26,8 +28,6 @@ const objects = [
     category: "Culture",
   },
 ];
-import ObjectsTable from "../Objects/ObjectsTable.vue";
-import ViewHeader from "./common/ViewHeader.vue";
 </script>
 
 <style scoped></style>
