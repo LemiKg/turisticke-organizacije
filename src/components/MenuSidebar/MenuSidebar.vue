@@ -1,7 +1,9 @@
 <template>
   <aside class="h-full p-4 flex flex-col justify-between gap-4">
     <div class="flex flex-col gap-2">
-      <SearchForm :submitMethod="() => navigateTo('/search', 'search')" />
+      <SearchForm
+        :submitMethod="(data) => navigateTo('/search', 'search', { q: data })"
+      />
       <SidebarItem
         :selected="selectedItem === 'dashboard'"
         @click.native="() => navigateTo('/', 'dashboard')"
@@ -40,9 +42,13 @@ import SidebarItem from "./SidebarItem.vue";
 const router = useRouter();
 
 const selectedItem = ref("dashboard");
-const navigateTo = (path: string, itemId: string) => {
+const navigateTo = (
+  path: string,
+  itemId: string,
+  query?: Record<string, string>
+) => {
   selectedItem.value = itemId;
-  router.push(path);
+  router.push({ path, query });
 };
 </script>
 

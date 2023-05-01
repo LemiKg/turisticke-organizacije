@@ -22,27 +22,33 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, PropType, nextTick } from "vue";
 import SidebarItem from "./SidebarItem.vue";
 
 const props = defineProps({
   submitMethod: {
-    type: Function,
+    type: Function as PropType<(data: string) => void>,
     default: () => {},
   },
 });
 
 const searchInput = ref<HTMLInputElement | null>(null);
+const searchVisible = ref(false);
 
 const searchSubmitted = () => {
   const data = (searchInput?.value?.value as string) || "";
-  props.submitMethod();
+  props.submitMethod(data);
 };
-
-const searchVisible = ref(false);
 
 const toggleSearchVisibility = () => {
   searchVisible.value = !searchVisible.value;
+
+  if (searchVisible.value) {
+    nextTick(() => {
+      searchInput.value?.focus();
+    });
+  }
+
   return;
 };
 </script>
